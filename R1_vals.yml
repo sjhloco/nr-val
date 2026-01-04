@@ -1,0 +1,80 @@
+hosts:
+  R1:
+    system:
+      image: 17.15.1
+    neighbor:
+      cdp:
+        Eth 0/1:
+          nbr_name: ISP.lab
+          nbr_intf: Uni Eth 0/1
+        Eth 0/0:
+          nbr_name: CORE.lab
+          nbr_intf: Uni Eth 0/0
+        Eth 0/2:
+          nbr_name: CORE.lab
+          nbr_intf: Uni Eth 0/1
+      lldp:
+        Et0/2:
+          nbr_name: CORE.lab
+          nbr_intf: Et0/1
+        Et0/1:
+          nbr_name: ISP.lab
+          nbr_intf: Et0/1
+    interface:
+      ip_brief:
+        Ethernet0/0: 192.168.255.102
+        Ethernet0/1: 10.1.0.2
+        Ethernet0/2: 10.1.0.6
+        Loopback0: 10.0.0.2
+    route_table:
+      route_count:
+        global: 10
+      route:
+        global:
+          1.1.1.1/32:
+            nh: 10.1.0.1
+            rtype: B
+          8.8.8.8/32:
+            nh: 10.1.0.1
+            rtype: B
+          10.0.0.1/32:
+            nh: 10.1.0.1
+            rtype: B
+          10.0.0.2/32:
+            nh: Loopback0
+            rtype: C
+          10.1.0.0/30:
+            nh: Ethernet0/1
+            rtype: C
+          10.1.0.2/32:
+            nh: Ethernet0/1
+            rtype: L
+          10.1.0.4/30:
+            nh: Ethernet0/2
+            rtype: C
+          10.1.0.6/32:
+            nh: Ethernet0/2
+            rtype: L
+          172.16.0.0/24:
+            nh: 10.1.0.5
+            rtype: O E2
+          172.16.1.0/24:
+            nh: 10.1.0.5
+            rtype: O E2
+    route_protocol:
+      ospf_intf_nbr:
+        Lo0:
+          pid: 1
+          area: 0.0.0.0
+        Et0/2:
+          pid: 1
+          area: 0.0.0.0
+          nbr:
+          - 10.0.0.3
+      ospf_lsdb_count:
+        1:
+          total_lsa: 4
+      bgp_peer:
+        10.1.0.1:
+          asn: 99
+          rcv_pfx: 3

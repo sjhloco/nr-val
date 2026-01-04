@@ -1,0 +1,12 @@
+all:
+  system:
+    - image
+  interface:
+    - ip_brief
+  route_table:
+    - route_count
+    - route
+  route_protocol:
+    - ospf_intf_nbr
+    - ospf_lsdb_count
+    - bgp_peer
