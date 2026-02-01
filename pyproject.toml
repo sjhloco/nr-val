@@ -6,10 +6,10 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "nornir>=3.5.0",
-    "nornir-validate>=0.3.1",
     "pyaml>=25.7.0",
     "ntc-templates",
     "nornir-rich",
+    "nornir-validate>=0.3.2",
 ]
 
 
