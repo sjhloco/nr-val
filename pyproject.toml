@@ -6,10 +6,8 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "nornir>=3.5.0",
+    "nornir-validate>=0.4.1",
     "pyaml>=25.7.0",
-    "ntc-templates",
-    "nornir-rich",
-    "nornir-validate>=0.3.2",
 ]
 
 
@@ -75,7 +73,3 @@ dev = [
     "pytest>=9.0.2",
     "ruff>=0.14.10",
 ]
-
-[tool.uv.sources]
-ntc-templates = { git = "https://github.com/networktocode/ntc-templates.git", rev = "286039e" }
-nornir-rich = { git = "https://github.com/sjhloco/nornir_rich", rev = "per_panel_var" }
