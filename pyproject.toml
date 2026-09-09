@@ -5,8 +5,8 @@ description = "Test script for running nornir-validate"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
-    "nornir>=3.5.0",
-    "nornir-validate>=0.4.1",
+    "nornir>=3.6.0",
+    "nornir-validate>=1.0.0",
     "pyaml>=25.7.0",
 ]
 
